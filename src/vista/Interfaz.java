@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package vistas;
+package vista;
 
 import javax.swing.ImageIcon;
 
@@ -17,7 +13,7 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/vistas/logo.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/assets/logo.png")).getImage());
     }
 
     /**
@@ -55,6 +51,11 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         BTN_LIMPIAR = new javax.swing.JButton();
+        BTN_ELIMINAR = new javax.swing.JButton();
+        BTN_EDITAR = new javax.swing.JButton();
+        BTN_CONSULTAR = new javax.swing.JButton();
+        SEARCH_TEXT = new javax.swing.JTextField();
+        BTN_SEARCH = new javax.swing.JButton();
 
         jScrollPane3.setViewportView(jEditorPane1);
 
@@ -64,13 +65,13 @@ public class Interfaz extends javax.swing.JFrame {
         setTitle("Lector de calidad de agua by @rxtsel");
         setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         setLocation(new java.awt.Point(0, 0));
+        setMinimumSize(new java.awt.Dimension(70, 20));
         setName("frame"); // NOI18N
         setResizable(false);
 
         ID1.setLabelFor(ID1);
         ID1.setText("ID*");
 
-        ID_TEXT.setFocusCycleRoot(true);
         ID_TEXT.setNextFocusableComponent(NOMBRE_TEXT);
         ID_TEXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +81,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         NOMBRE.setText("NOMBRE*");
 
+        NOMBRE_TEXT.setNextFocusableComponent(MUNICIPIO_TEXT);
         NOMBRE_TEXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NOMBRE_TEXTActionPerformed(evt);
@@ -88,6 +90,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         TIPO_CUERPO_AGUA.setText("TIPO CUERPO DE AGUA*");
 
+        TIPO_CUERPO_AGUA_TEXT.setNextFocusableComponent(TIPO_AGUA_TEXT);
         TIPO_CUERPO_AGUA_TEXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TIPO_CUERPO_AGUA_TEXTActionPerformed(evt);
@@ -96,6 +99,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         MUNICIPIO.setText("MUNICIPIO*");
 
+        MUNICIPIO_TEXT.setNextFocusableComponent(TIPO_CUERPO_AGUA_TEXT);
         MUNICIPIO_TEXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MUNICIPIO_TEXTActionPerformed(evt);
@@ -112,6 +116,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         TIPO_AGUA.setText("TIPO DE AGUA*");
 
+        TIPO_AGUA_TEXT.setNextFocusableComponent(IRCA_TEXT);
         TIPO_AGUA_TEXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TIPO_AGUA_TEXTActionPerformed(evt);
@@ -119,6 +124,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         BTN_INGRESAR.setText("Ingresar");
+        BTN_INGRESAR.setMinimumSize(new java.awt.Dimension(70, 20));
         BTN_INGRESAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_INGRESARActionPerformed(evt);
@@ -126,6 +132,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         BTN_PROCESAR.setText("Procesar");
+        BTN_PROCESAR.setMinimumSize(new java.awt.Dimension(70, 20));
         BTN_PROCESAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_PROCESARActionPerformed(evt);
@@ -155,9 +162,52 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel2.setText("Made with ❤️ by @rxtsel");
 
         BTN_LIMPIAR.setText("Limpiar");
+        BTN_LIMPIAR.setMinimumSize(new java.awt.Dimension(70, 20));
         BTN_LIMPIAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_LIMPIARActionPerformed(evt);
+            }
+        });
+
+        BTN_ELIMINAR.setText("Eliminar");
+        BTN_ELIMINAR.setMinimumSize(new java.awt.Dimension(70, 20));
+        BTN_ELIMINAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ELIMINARActionPerformed(evt);
+            }
+        });
+
+        BTN_EDITAR.setText("Guardar");
+        BTN_EDITAR.setMinimumSize(new java.awt.Dimension(70, 20));
+        BTN_EDITAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EDITARActionPerformed(evt);
+            }
+        });
+
+        BTN_CONSULTAR.setText("Consultar");
+        BTN_CONSULTAR.setMaximumSize(new java.awt.Dimension(80, 22));
+        BTN_CONSULTAR.setMinimumSize(new java.awt.Dimension(70, 20));
+        BTN_CONSULTAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_CONSULTARActionPerformed(evt);
+            }
+        });
+
+        SEARCH_TEXT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SEARCH_TEXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SEARCH_TEXTActionPerformed(evt);
+            }
+        });
+
+        BTN_SEARCH.setBackground(new java.awt.Color(29, 29, 29));
+        BTN_SEARCH.setForeground(new java.awt.Color(245, 245, 245));
+        BTN_SEARCH.setText("BUSCAR");
+        BTN_SEARCH.setBorder(null);
+        BTN_SEARCH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SEARCHActionPerformed(evt);
             }
         });
 
@@ -168,21 +218,23 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IRCA_TEXT)
-                            .addComponent(IRCA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TIPO_AGUA_TEXT)
-                            .addComponent(TIPO_AGUA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TIPO_CUERPO_AGUA_TEXT)
-                            .addComponent(TIPO_CUERPO_AGUA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MUNICIPIO_TEXT)
-                            .addComponent(MUNICIPIO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(NOMBRE_TEXT)
-                            .addComponent(NOMBRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ID_TEXT)
-                            .addComponent(ID1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(IRCA_TEXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(IRCA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TIPO_AGUA_TEXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TIPO_AGUA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TIPO_CUERPO_AGUA_TEXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TIPO_CUERPO_AGUA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MUNICIPIO_TEXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MUNICIPIO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(NOMBRE_TEXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NOMBRE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ID_TEXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(ID1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(81, 81, 81)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
@@ -194,47 +246,65 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(40, 40, 40))
             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(BTN_INGRESAR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(BTN_PROCESAR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(BTN_LIMPIAR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(BTN_INGRESAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(BTN_PROCESAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_LIMPIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(BTN_CONSULTAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(BTN_EDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(BTN_ELIMINAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(SEARCH_TEXT, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(BTN_SEARCH, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                .addGap(20, 20, 20)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ID1, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(ENTRADAS, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE))
-                .addGap(5, 5, 5)
+                    .addComponent(SEARCH_TEXT, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_SEARCH, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ID1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ENTRADAS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ID_TEXT)
+                        .addComponent(ID_TEXT, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
                         .addComponent(NOMBRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(5, 5, 5)
-                        .addComponent(NOMBRE_TEXT)
+                        .addComponent(NOMBRE_TEXT, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
                         .addComponent(MUNICIPIO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(5, 5, 5)
-                        .addComponent(MUNICIPIO_TEXT)
+                        .addComponent(MUNICIPIO_TEXT, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
                         .addComponent(TIPO_CUERPO_AGUA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(5, 5, 5)
-                        .addComponent(TIPO_CUERPO_AGUA_TEXT)
+                        .addComponent(TIPO_CUERPO_AGUA_TEXT, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
-                        .addComponent(TIPO_AGUA, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                        .addComponent(TIPO_AGUA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(5, 5, 5)
-                        .addComponent(TIPO_AGUA_TEXT)
+                        .addComponent(TIPO_AGUA_TEXT, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
-                        .addComponent(IRCA, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                        .addComponent(IRCA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(5, 5, 5)
-                        .addComponent(IRCA_TEXT))
+                        .addComponent(IRCA_TEXT, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
@@ -246,9 +316,14 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(BTN_INGRESAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_PROCESAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_LIMPIAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_CONSULTAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_EDITAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_ELIMINAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
 
         ID_TEXT.getAccessibleContext().setAccessibleName("");
@@ -293,6 +368,26 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_LIMPIARActionPerformed
 
+    private void BTN_CONSULTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CONSULTARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_CONSULTARActionPerformed
+
+    private void BTN_EDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EDITARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_EDITARActionPerformed
+
+    private void BTN_ELIMINARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ELIMINARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_ELIMINARActionPerformed
+
+    private void SEARCH_TEXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SEARCH_TEXTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SEARCH_TEXTActionPerformed
+
+    private void BTN_SEARCHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SEARCHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_SEARCHActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -332,9 +427,13 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton BTN_CONSULTAR;
+    public javax.swing.JButton BTN_EDITAR;
+    public javax.swing.JButton BTN_ELIMINAR;
     public javax.swing.JButton BTN_INGRESAR;
     public javax.swing.JButton BTN_LIMPIAR;
     public javax.swing.JButton BTN_PROCESAR;
+    public javax.swing.JButton BTN_SEARCH;
     public javax.swing.JLabel ENTRADAS;
     public javax.swing.JTextArea ENTRADAS_TXT_AREA;
     public javax.swing.JLabel ID1;
@@ -347,6 +446,7 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JTextField NOMBRE_TEXT;
     public javax.swing.JLabel SALIDAS;
     public javax.swing.JTextArea SALIDAS_TXT_AREA;
+    public javax.swing.JTextField SEARCH_TEXT;
     public javax.swing.JLabel TIPO_AGUA;
     public javax.swing.JTextField TIPO_AGUA_TEXT;
     public javax.swing.JLabel TIPO_CUERPO_AGUA;
